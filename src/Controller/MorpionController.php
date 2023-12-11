@@ -57,8 +57,6 @@ class MorpionController extends AbstractController
 
             $this->morpionMananger->saveGrid($grid);
             $grid = $this->morpionMananger->getGrid();
-            dump($grid);
-            dump($grid->hasWinner());
         }
 
         return $this->render('morpion/play.html.twig', ['grid' => $grid]);
