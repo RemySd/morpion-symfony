@@ -6,8 +6,8 @@ use App\Service\Morpion\Cell;
 
 class Grid
 {
-    private bool $turn = false;
-    private array $cells;
+    private ?string $playerTurn = null;
+    private array $cells = [];
 
     public function getCells(): array
     {
@@ -21,21 +21,20 @@ class Grid
         return $this;
     }
 
-    public function getTurn(): bool
+    public function getPlayerTurn(): string
     {
-        return $this->turn;
+        return $this->playerTurn;
     }
 
-    public function setTurn(bool $turn): self
+    public function setPlayerTurn(?string $turn): self
     {
-        $this->turn = $turn;
+        $this->playerTurn = $turn;
 
         return $this;
     }
 
     public function getCellByPosition(int $xPos, int $yPos): Cell
     {
-        dump($this->cells[$yPos][$xPos]);
         return $this->cells[$yPos][$xPos];
     }
 

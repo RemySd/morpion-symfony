@@ -35,22 +35,14 @@ class MorpionController extends AbstractController
     public function play(Request $request): Response
     {
         $grid = $this->morpionMananger->getGrid();
-        dump($grid);
-        $cellPosition = $request->query->get('cell', null);
-        $cell = null;
+        $cell = $this->morpionMananger->getInteractedCell();
 
-        if ($cellPosition) {
-            $cell = explode('-', $cellPosition);
-        }
-
-        if ($cell) {
+        if (!empty($cell)) {
             $cell = $grid->getCellByPosition($cell[0], $cell[1]);
             $cell->setSymbol('cross');
             $this->morpionMananger->saveGrid($grid);
         }
 
-        dump($grid);
-        
         return $this->render('morpion/play.html.twig', [
             'grid' => $grid
         ]);

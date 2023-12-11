@@ -22,6 +22,7 @@
 								{% if grid.cells[i][j].symbol == 'cross' %}
 									<img src="{{ asset('images/cross.png') }}" class="card-img-top grow" alt="question mark">
 								{% elseif grid.cells[i][j].symbol == 'circle' %}
+								
 									<img src="{{ asset('images/circle.png') }}" class="card-img-top grow" alt="question mark">
 								{% else %}
 									<a href="{{ path('app_morpion_play', {'cell': j ~ '-' ~ i}) }}">

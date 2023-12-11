@@ -4,7 +4,7 @@ namespace App\Service\Morpion;
 
 class Cell
 {
-    private ?bool $symbol = null;
+    private ?string $symbol = null;
     private int $xPos;
     private int $yPos;
 
@@ -13,12 +13,12 @@ class Cell
         return $this->symbol === $otherCell->getSymbol();
     }
 
-    public function getSymbol(): ?bool
+    public function getSymbol(): ?string
     {
         return $this->symbol;
     }
 
-    public function setSymbol(?bool $symbol): self
+    public function setSymbol(?string $symbol): self
     {
         $this->symbol = $symbol;
 
