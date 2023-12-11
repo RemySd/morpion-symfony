@@ -10,7 +10,7 @@
 		<div class="row">
 			<div class="col-12 mt-5">
 				<p>Au tour de</p>
-				<img src="{{ asset('images/circle.png') }}" class="card-img-top img-cell cell-turn" alt="question mark">
+				<img src="{{ asset('images/' ~ grid.playerTurn ~ '.png') }}" class="card-img-top img-cell cell-turn" alt="{{ grid.playerTurn }} symfony">
 			</div>
 		</div>
 		<div class="row">
@@ -22,7 +22,7 @@
 								{% if grid.cells[i][j].symbol == 'cross' %}
 									<img src="{{ asset('images/cross.png') }}" class="card-img-top grow" alt="question mark">
 								{% elseif grid.cells[i][j].symbol == 'circle' %}
-								
+
 									<img src="{{ asset('images/circle.png') }}" class="card-img-top grow" alt="question mark">
 								{% else %}
 									<a href="{{ path('app_morpion_play', {'cell': j ~ '-' ~ i}) }}">

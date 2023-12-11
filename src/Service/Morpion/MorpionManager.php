@@ -2,13 +2,17 @@
 
 namespace App\Service\Morpion;
 
+use App\Factory\GridFactory;
 use App\Service\Morpion\Grid;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Serializer\SerializerInterface;
 
 class MorpionManager
 {
-    public const MORPION_SESSION_KEY = 'grid_morpion';
+    private const MORPION_SESSION_KEY = 'grid_morpion';
+
+    public const CIRCLE_PLAYER = 'circle';
+    public const CROSS_PLAYER = 'cross';
 
     private SerializerInterface $serializer;
     private RequestStack $requestStack;
@@ -43,7 +47,7 @@ class MorpionManager
         return $grid;
     }
 
-    public function getInteractedCell(): ?array
+    public function getInteractedCellPositions(): ?array
     {
         $cellPosition = $this->requestStack->getCurrentRequest()->query->get('cell', null);
 
@@ -52,5 +56,20 @@ class MorpionManager
         }
 
         return null;
+    }
+
+    public function updatePlayerTurn(Grid $grid): void
+    {
+        if ($grid->getPlayerTurn() === MorpionManager::CIRCLE_PLAYER) {
+            $grid->setPlayerTurn(MorpionManager::CROSS_PLAYER);
+        } else {
+            $grid->setPlayerTurn(MorpionManager::CIRCLE_PLAYER);
+        }
+    }
+
+    public function applySymbolToCell(Grid $grid, array $positions): void
+    {
+        $cell = $grid->getCellByPosition($positions[0], $positions[1]);
+        $cell->setSymbol($grid->getPlayerTurn());
     }
 }
