@@ -1,7 +1,7 @@
 # morpion-symfony
 Le jeu du morpion créer en PHP avec le framework Symfony
 
-<img src="morpion_trailer.gif" height="200">
+<img src="morpion_trailer.gif" height="300">
 
 ## Installation
 
