@@ -66,10 +66,4 @@ class MorpionManager
             $grid->setPlayerTurn(MorpionManager::CIRCLE_PLAYER);
         }
     }
-
-    public function applySymbolToCell(Grid $grid, array $positions): void
-    {
-        $cell = $grid->getCellByPosition($positions[0], $positions[1]);
-        $cell->setSymbol($grid->getPlayerTurn());
-    }
 }

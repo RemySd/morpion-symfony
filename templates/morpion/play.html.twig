@@ -9,8 +9,15 @@
 	<div class="container text-center">
 		<div class="row">
 			<div class="col-12 mt-5">
-				<p>Au tour de</p>
-				<img src="{{ asset('images/' ~ grid.playerTurn ~ '.png') }}" class="card-img-top img-cell cell-turn" alt="{{ grid.playerTurn }} symfony">
+				{% if grid.hasWinner %}
+					<p>Le gagnant est</p>
+					<img src="{{ asset('images/' ~ grid.getWinner ~ '.png') }}" class="card-img-top img-cell cell-turn" alt="{{ grid.getWinner }} symfony">
+				{% elseif grid.isOver %}
+					<p>Aucun gagnant !</p>
+				{% else %}
+					<p>Au tour de</p>
+					<img src="{{ asset('images/' ~ grid.playerTurn ~ '.png') }}" class="card-img-top img-cell cell-turn" alt="{{ grid.playerTurn }} symfony">
+				{% endif %}
 			</div>
 		</div>
 		<div class="row">
@@ -25,15 +32,25 @@
 
 									<img src="{{ asset('images/circle.png') }}" class="card-img-top grow" alt="question mark">
 								{% else %}
-									<a href="{{ path('app_morpion_play', {'cell': j ~ '-' ~ i}) }}">
+									{% if grid.hasWinner or grid.isOver %}
 										<img src="{{ asset('images/cell.png') }}" class="card-img-top grow" alt="question mark">
-									</a>
+									{% else %}
+										<a href="{{ path('app_morpion_play', {'cell': j ~ '-' ~ i}) }}">
+											<img src="{{ asset('images/cell.png') }}" class="card-img-top grow" alt="question mark">
+										</a>
+									{% endif %}
 								{% endif %}
 							</div>
 						{% endfor %}
 					</div>
 				{% endfor %}
-
+			</div>
+		</div>
+		<div class="row justify-content-center mt-5">
+			<div class="col-2">
+				{% if grid.hasWinner or grid.isOver %}
+					<a class="btn btn-dark" href="{{ path('app_morpion_initialize') }}">Rejouer ?</a>
+				{% endif %}
 			</div>
 		</div>
 	</div>

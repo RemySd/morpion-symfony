@@ -44,7 +44,7 @@ class Grid
 
         foreach ($this->cells as $cellLine) {
             foreach ($cellLine as $cell) {
-                if (!empty($cell->getSymbol)) {
+                if (!empty($cell->getSymbol())) {
                     $countCellsWithSymbol++;
                 }
             }
@@ -59,36 +59,46 @@ class Grid
 
     public function getWinner(): ?string
     {
-        if ($this->cells[0][0] === $this->cells[0][1] && $this->cells[0][0] == $this->cells[0][2]) {
-            return $this->cells[0][0]->getSymbol();
+        $bottomLeft = $this->cells[0][0]->getSymbol();
+        $left = $this->cells[1][0]->getSymbol();
+        $topLeft = $this->cells[2][0]->getSymbol();
+        $top = $this->cells[2][1]->getSymbol();
+        $topRight = $this->cells[2][2]->getSymbol();
+        $right = $this->cells[1][2]->getSymbol();
+        $bottomRight = $this->cells[0][2]->getSymbol();
+        $bottom = $this->cells[0][1]->getSymbol();
+        $center = $this->cells[1][1]->getSymbol();
+
+        if ($bottomLeft === $bottom && $bottomLeft == $bottomRight) {
+            return $bottomLeft;
         }
 
-        if ($this->cells[1][0] === $this->cells[1][1] && $this->cells[0][0] == $this->cells[1][2]) {
-            return $this->cells[1][0]->getSymbol();
+        if ($left === $center && $left == $right) {
+            return $left;
         }
 
-        if ($this->cells[2][0] === $this->cells[2][1] && $this->cells[2][0] == $this->cells[2][2]) {
-            return $this->cells[2][0]->getSymbol();
+        if ($topLeft === $top && $topLeft == $topRight) {
+            return $topLeft;
         }
 
-        if ($this->cells[0][0] === $this->cells[1][0] && $this->cells[0][0] == $this->cells[2][0]) {
-            return $this->cells[0][0]->getSymbol();
+        if ($bottomLeft === $left && $bottomLeft == $bottomRight) {
+            return $bottomLeft;
         }
         
-        if ($this->cells[0][1] === $this->cells[1][1] && $this->cells[0][1] == $this->cells[2][1]) {
-            return $this->cells[0][1]->getSymbol();
+        if ($bottom === $center && $bottom == $top) {
+            return $bottom;
         }
 
-        if ($this->cells[0][2] === $this->cells[1][2] && $this->cells[0][2] == $this->cells[2][2]) {
-            return $this->cells[0][2]->getSymbol();
+        if ($bottomRight === $right && $bottomRight == $topRight) {
+            return $bottomRight;
         }
 
-        if ($this->cells[0][0] === $this->cells[1][1] && $this->cells[0][0] == $this->cells[2][2]) {
-            return $this->cells[0][0]->getSymbol();
+        if ($bottomLeft === $center && $bottomLeft == $topRight) {
+            return $bottomLeft;
         }
 
-        if ($this->cells[2][0] === $this->cells[1][1] && $this->cells[2][0] == $this->cells[0][2]) {
-            return $this->cells[2][0]->getSymbol();
+        if ($topLeft === $center && $topLeft == $bottomRight) {
+            return $topLeft;
         }
 
         return null;
