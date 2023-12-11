@@ -1,0 +1,13 @@
+app:
+    home:
+        play_button: 'Jouer maintenant !'
+    meta:
+        title: 'Le jeu du mémory'
+    nav:
+        home: 'Accueil'
+        play: 'Jouer'
+        langue: Langue
+        locale_en: Anglais
+        locale_fr: Français
+    footer:
+        content: 'Remy Le Dev © %year% tous droits réservés'

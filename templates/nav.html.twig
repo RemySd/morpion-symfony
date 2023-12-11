@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+	<div class="container-fluid">
+		<a class="navbar-brand pt-0 d-block d-sm-none" href="#">
+			<img class="img-brand" src="{{ asset('images/morpion_icon.png')}}" alt="morpion icon">
+		</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+			<a class="navbar-brand pt-0 d-none d-sm-block" href="#">
+				<img class="img-brand" src="{{ asset('images/morpion_icon.png')}}" alt="morpion icon">
+			</a>
+			<div class="navbar-nav">
+				<a class="nav-link" href="{{ path('app_morpion') }}">{{ 'app.nav.home'|trans }}</a>
+				<a class="nav-link" href="{{ path('app_morpion_initialize') }}">{{ 'app.nav.play'|trans }}</a>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						{{ 'app.nav.langue'|trans }}
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a class="dropdown-item" href="{{ path('app_morpion_edit_locale', {'locale': 'en'}) }}">{{ 'app.nav.locale_en'|trans }}
+								{% if app.session.get('_locale') == 'en' %}
+									✔
+								{% endif %}
+							</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{ path('app_morpion_edit_locale', {'locale': 'fr'}) }}">{{ 'app.nav.locale_fr'|trans }}
+								{% if app.session.get('_locale') == 'fr' %}
+									✔
+								{% endif %}
+							</a>
+						</li>
+					</ul>
+				</li>
+			</div>
+		</div>
+	</div>
+</nav>

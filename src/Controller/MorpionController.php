@@ -17,6 +17,15 @@ class MorpionController extends AbstractController
         $this->morpionMananger = $morpionMananger;
     }
 
+    #[Route('/edit-locale/{locale}', name: 'app_morpion_edit_locale')]
+    public function editLocale(string $locale, Request $request): Response
+    {
+        $request->getSession()->set('_locale', $locale);
+        $route = $request->headers->get('referer', 'app_memory');
+
+        return $this->redirect($route);
+    }
+
     #[Route('/', name: 'app_morpion')]
     public function index(): Response
     {
