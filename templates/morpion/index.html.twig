@@ -2,7 +2,21 @@
 
 {% block body %}
 
-    <p>Bienvenu sur le jeu morpion</p>
-    <a href="{{ path('app_morpion_initialize') }}">Jouer !</a>
+	<div class="container">
+		<div class="row mt-5 mb-5 justify-content-center">
+			<div class="col-12 col-md-6 col-lg-5 col-xl-4">
+				<div>
+					{{ 'app.home.description'|trans|raw }}
+				</div>
+				<div class="col text-center mt-5">
+					<a class="btn btn-dark" href="{{ path('app_morpion_initialize') }}">{{ 'app.home.play_button'|trans }}</a>
+				</div>
+			</div>
+			<div class="mt-5 col-10 col-md-6 col-lg-5 col-xl-4">
+				<img class="w-100" style="height: 300px; object-fit: contain" src="{{ asset('gifs/morpion_trailer.gif') }}"/>
+			</div>
+		</div>
+		
+	</div>
 
 {% endblock %}

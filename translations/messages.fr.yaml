@@ -1,6 +1,8 @@
 app:
     home:
         play_button: 'Jouer maintenant !'
+        description: |
+            Bienvenue sur notre plateforme de jeu en ligne, l'endroit idéal pour vivre l'excitation du célèbre jeu de société : le morpion ! Aussi connu sous le nom de Tic-tac-toe, ce jeu classique a été revisité pour vous offrir une expérience divertissante et stratégique à travers notre interface conviviale.
     meta:
         title: 'Le jeu du mémory'
     nav:
@@ -9,5 +11,10 @@ app:
         langue: Langue
         locale_en: Anglais
         locale_fr: Français
+    ingame:
+        button_retry: 'Rejouer ?'
+        player_turn: 'Au tour de'
+        winner_is: 'Le gagnant est'
+        no_winner: 'Aucun gagnant !'
     footer:
         content: 'Remy Le Dev © %year% tous droits réservés'

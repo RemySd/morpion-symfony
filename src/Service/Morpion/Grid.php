@@ -33,9 +33,9 @@ class Grid
         return $this;
     }
 
-    public function getCellByPosition(int $xPos, int $yPos): Cell
+    public function getCellByPosition(int $yPos, int $xPos): Cell
     {
-        return $this->cells[$yPos][$xPos];
+        return $this->cells[$xPos][$yPos];
     }
 
     public function isOver(): bool
@@ -59,45 +59,45 @@ class Grid
 
     public function getWinner(): ?string
     {
-        $bottomLeft = $this->cells[0][0]->getSymbol();
-        $left = $this->cells[1][0]->getSymbol();
-        $topLeft = $this->cells[2][0]->getSymbol();
-        $top = $this->cells[2][1]->getSymbol();
-        $topRight = $this->cells[2][2]->getSymbol();
-        $right = $this->cells[1][2]->getSymbol();
-        $bottomRight = $this->cells[0][2]->getSymbol();
-        $bottom = $this->cells[0][1]->getSymbol();
-        $center = $this->cells[1][1]->getSymbol();
+        $bottomLeft = $this->getCellByPosition(0, 0)->getSymbol();
+        $left = $this->getCellByPosition(1, 0)->getSymbol();
+        $topLeft = $this->getCellByPosition(2, 0)->getSymbol();
+        $top = $this->getCellByPosition(2, 1)->getSymbol();
+        $topRight = $this->getCellByPosition(2, 2)->getSymbol();
+        $right = $this->getCellByPosition(1, 2)->getSymbol();
+        $bottomRight = $this->getCellByPosition(0, 2)->getSymbol();
+        $bottom = $this->getCellByPosition(0, 1)->getSymbol();
+        $center = $this->getCellByPosition(1, 1)->getSymbol();
 
-        if ($bottomLeft === $bottom && $bottomLeft == $bottomRight) {
+        if ($bottomLeft === $bottom && $bottomLeft == $bottomRight && !empty($bottomLeft)) {
             return $bottomLeft;
         }
 
-        if ($left === $center && $left == $right) {
+        if ($left === $center && $left === $right && !empty($left)) {
             return $left;
         }
 
-        if ($topLeft === $top && $topLeft == $topRight) {
+        if ($topLeft === $top && $topLeft === $topRight && !empty($topLeft)) {
             return $topLeft;
         }
 
-        if ($bottomLeft === $left && $bottomLeft == $bottomRight) {
+        if ($bottomLeft === $left && $bottomLeft === $topLeft && !empty($bottomLeft)) {
             return $bottomLeft;
         }
         
-        if ($bottom === $center && $bottom == $top) {
+        if ($bottom === $center && $bottom === $top && !empty($bottom)) {
             return $bottom;
         }
 
-        if ($bottomRight === $right && $bottomRight == $topRight) {
+        if ($bottomRight === $right && $bottomRight === $topRight && !empty($bottomRight)) {
             return $bottomRight;
         }
 
-        if ($bottomLeft === $center && $bottomLeft == $topRight) {
+        if ($bottomLeft === $center && $bottomLeft === $topRight && !empty($bottomLeft)) {
             return $bottomLeft;
         }
 
-        if ($topLeft === $center && $topLeft == $bottomRight) {
+        if ($topLeft === $center && $topLeft === $bottomRight && !empty($topLeft)) {
             return $topLeft;
         }
 

@@ -45,10 +45,6 @@ class MorpionController extends AbstractController
     {
         $grid = $this->morpionMananger->getGrid();
 
-        if ($grid->isOver() || $grid->hasWinner()) {
-            return $this->render('morpion/play.html.twig', ['grid' => $grid]);
-        }
-
         $cellPositions = $this->morpionMananger->getInteractedCellPositions();
 
         if (!empty($cellPositions)) {
@@ -60,6 +56,9 @@ class MorpionController extends AbstractController
             }
 
             $this->morpionMananger->saveGrid($grid);
+            $grid = $this->morpionMananger->getGrid();
+            dump($grid);
+            dump($grid->hasWinner());
         }
 
         return $this->render('morpion/play.html.twig', ['grid' => $grid]);

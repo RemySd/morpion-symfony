@@ -17,7 +17,7 @@ class GridFactory implements FactoryInterface
 
         $cells = [];
 
-        for ($y = 0; $y < 3; $y++) {
+        for ($y = 2; $y >= 0; $y--) {
             $cellLine = [];
 
             for ($x = 0; $x < 3; $x++) {

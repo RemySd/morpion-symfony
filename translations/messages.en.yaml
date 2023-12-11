@@ -1,0 +1,20 @@
+app:
+    home:
+        play_button: "Play Now!"
+        description: |
+            Welcome to our online gaming platform, the perfect place to experience the excitement of the famous board game: Tic-tac-toe, also known as Morpion! This classic game has been reimagined to provide you with an entertaining and strategic experience through our user-friendly interface.
+    meta:
+        title: "The Memory Game"
+    nav:
+        home: "Home"
+        play: "Play"
+        langue: Language
+        locale_en: English
+        locale_fr: French
+    ingame:
+        button_retry: "Play Again?"
+        player_turn: "Player's Turn"
+        winner_is: "The Winner is"
+        no_winner: "No Winner!"
+    footer:
+        content: "Remy Le Dev © %year% All rights reserved"
