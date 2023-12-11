@@ -108,30 +108,4 @@ class Grid
     {
         return !empty($this->getWinner()) ? true : false;
     }
-
-    //public function getAdjacentCell(Cell $cell, array $cellsToExclude): array
-    //{
-    //    $adjacentsCells = [];
-//
-    //    $xPos = $cell->getXPos();
-    //    $yPos = $cell->getYPos();
-//
-    //    if (!empty($this->cells[$yPos - 1][$xPos])) {
-    //        $adjacentsCells[] = $this->cells[$yPos - 1][$xPos];
-    //    }
-//
-    //    if (!empty($this->cells[$yPos + 1][$xPos])) {
-    //        $adjacentsCells[] = $this->cells[$yPos + 1][$xPos];
-    //    }
-//
-    //    if (!empty($this->cells[$yPos][$xPos - 1])) {
-    //        $adjacentsCells[] = $this->cells[$yPos][$xPos - 1];
-    //    }
-//
-    //    if (!empty($this->cells[$yPos][$xPos + 1])) {
-    //        $adjacentsCells[] = $this->cells[$yPos][$xPos + 1];
-    //    }
-//
-    //    return $adjacentsCells;
-    //}
 }
