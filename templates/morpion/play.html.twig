@@ -11,12 +11,12 @@
 			<div class="col-12 mt-5">
 				{% if grid.hasWinner %}
 					<p>{{ 'app.ingame.winner_is'|trans }}</p>
-					<img src="{{ asset('images/' ~ grid.getWinner ~ '.png') }}" class="card-img-top img-cell cell-turn" alt="{{ grid.getWinner }} symfony">
+					<img src="{{ asset('images/' ~ grid.getWinner ~ '.png') }}" class="card-img-top img-cell cell-turn" alt="{{ grid.getWinner }} symbol">
 				{% elseif grid.isOver %}
 					<p>{{ 'app.ingame.no_winner'|trans }}</p>
 				{% else %}
 					<p>{{ 'app.ingame.player_turn'|trans }}</p>
-					<img src="{{ asset('images/' ~ grid.playerTurn ~ '.png') }}" class="card-img-top img-cell cell-turn" alt="{{ grid.playerTurn }} symfony">
+					<img src="{{ asset('images/' ~ grid.playerTurn ~ '.png') }}" class="card-img-top img-cell cell-turn" alt="{{ grid.playerTurn }} symbol">
 				{% endif %}
 			</div>
 		</div>

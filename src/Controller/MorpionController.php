@@ -41,7 +41,7 @@ class MorpionController extends AbstractController
     }
 
     #[Route('/play', name: 'app_morpion_play')]
-    public function play(Request $request): Response
+    public function play(): Response
     {
         $grid = $this->morpionMananger->getGrid();
 
